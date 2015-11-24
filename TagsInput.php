@@ -49,7 +49,7 @@ class TagsInput extends InputWidget
 
     public function registerScript()
     {
-        $clientOptions = empty($this->clientOptions) ? '' : Json::encode($this->clientOptions);
+        $clientOptions = is_string($this->clientOptions) ? $this->clientOptions : Json::encode($this->clientOptions);
         $js = "jQuery('#{$this->options["id"]}').tagsinput({$clientOptions});";
         $this->getView()->registerJs($js);
     }
